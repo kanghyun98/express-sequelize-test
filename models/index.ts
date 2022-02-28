@@ -9,11 +9,11 @@ import User from './user';
 
 type EnvType = 'production' | 'test' | 'development';
 type DBType = {
-  // Comment: typeof Comment;
-  // Hashtag: typeof Hashtag;
-  // Image: typeof Image;
-  // Post: typeof Post;
-  // User: typeof User;
+  Comment: typeof Comment;
+  Hashtag: typeof Hashtag;
+  Image: typeof Image;
+  Post: typeof Post;
+  User: typeof User;
   [key: string]: any;
 };
 
@@ -26,8 +26,8 @@ const sequelize = new Sequelize(
   config[env]
 );
 
-const db: DBType = {};
-// const db: DBType = { Comment, Hashtag, Image, Post, User };
+// const db: DBType = {};
+const db: DBType = { Comment, Hashtag, Image, Post, User };
 
 Object.keys(db).forEach((model) => {
   db[model].initModel(sequelize);
